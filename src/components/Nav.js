@@ -1,16 +1,16 @@
 import React, { useContext, useEffect } from "react";
+import { WishContext } from "../context/WishContext";
 
 export default function Nav() {
-    useEffect(() => {
-      console.log('Component re-rendered')
-    })
-    
+  //consume the WishContext
+  const [wishes, setWishes] = useContext(WishContext);
+
+  console.log('Nav: Render')
+
   return (
     <nav>
       <div>Bucket List</div>
-      <div>
-        4 wishes
-      </div>
+      <div>{wishes.length} wishes</div>
     </nav>
   );
 }

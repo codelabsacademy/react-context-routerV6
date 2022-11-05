@@ -1,11 +1,22 @@
 import React, { useContext } from "react";
+import { WishContext } from "../context/WishContext";
 
 export default function Wish({ title, id }) {
+  //consume the WishContext
+  const [wishes, setWishes] = useContext(WishContext);
 
-    const removeWish = () => {
-        console.log("removing wish...")
-    }
-    
+  console.log('Wish: Render')
+
+  const removeWish = () => {
+    console.log("removing wish...");
+
+    let newWishes = wishes.filter((wish) => {
+      return wish.id != id;
+    });
+
+    setWishes(newWishes);
+  };
+
   return (
     <div className="wish">
       <h3>{title}</h3>
